@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>★ 방명록 방명록 ★</title>
+</head>
+<body>
+	
+	<center>
+	<h2> = 간단한 방명록 = </h2>
+	
+	<hr>
+	
+	
+	<!--  
+	
+		- MVC Mode1 1 개발 
+		 JSP <% 자바코드 %> 
+		 jsp : HTML + Java (전체)
+		 개인 혼자 개발 , 50 page 내외 , 개발은 빠르게 할 수 있다. 
+		 중복코드가 계속 발생됨 , 사이트 규모가 커지면 유지보수 힘듦
+		
+		- MVC Mode1 2 개발 (MVC 개발)
+		  jsp : HTML + Java (java 코드는 최소로 들어감)
+		  대규모 사이트
+		  디자이너 + 개발자가 분리해서 협업 ( 여러명의 개발자가 협업하면서 개발)
+		  초기 개발이 어려울 수 있다.
+		  유지보수하기 쉬운 코드를 만들 수 있다 , 중복 코드 방지 가능 	
+			
+				
+	form : client 의 값을 받아서 서버로 전송해주는 태그 
+	
+			- name : 변수명
+			- method : post -> http 헤더 앞에 변수와 값을 전송 , 무제한 전송
+			           get  -> http URL에 ?변수=값,변수=값 ...  , 서버로 전송
+			           		 - URL에 변수와 값이 노출됨 , 보안에 약하다.	
+							 - 최대 255 byte 까지만 전송이 가능
+							 
+			- action : 서버에 호출할 페이지				 
+			
+			- input : 간단한 한 라인의 글  -> 반드시 form 블락내에 위치
+			- textarea : 많은 내용의 글   -> 반드시 form 블락내에 위치			 
+							 	
+	-->
+	
+	<form name = "guestboard"  method = "get" action = "save.jsp">  <!--확장자백앤드 jsp는 올수 있지만 html은 올 수 없다. -->
+	<table border = "1" width = "600px">
+		<tr> <td> 이름  </td> 
+		     <td> <input type = "text" name = "name"> </td>  <!-- 사용자가 넣은 값이 "name"변수에 할당됨 -->
+		</tr>
+		<tr> <td> E-Mail </td> 
+			 <td> <input type = "text" name = "email">  </td>  
+		</tr>
+		<tr> <td> 제목 </td> 
+		     <td>  <input type = "text" name = "subject">  </td>  
+		</tr>
+		<tr> <td> 내용 </td> 
+		     <td> <textarea  cols = "65" rows = "10" name = "contents" > </textarea>  </td>  <!-- 밑으로 10줄 , 한라인에 65자까지 -->
+		</tr>
+		
+		<tr> <td colspan = "2" align = "right">     <!-- colspan : <td> 2개를 하나로 합침 / align = "right" : 오른쪽 정렬 -->
+		    	<input type ="reset" value ="리셋">
+		    	<input type ="submit" value ="전송"> <!-- 전송버튼을 누르명 위의 "save.jsp" 호출 (get 방식) -->
+		     </td>  
+		</tr>
+		
+		
+	</table>
+	</form>
+	
+	<p>
+	<hr>
+	<p>
+	
+	<table border = "1" width ="600px">
+		<tr><td> 이름 :  </td> <td> 홍길동 </td> </tr>
+		<tr><td> E-Mail : </td> <td> aaa@aaa.com</td>  </tr> 
+		<tr><td> 제목 : </td> <td> 제목 입니다</td>  </tr> 
+		<tr><td> 내용 :  </td> <td> 내용입니다. </td>  </tr> 
+	</table>
+	
+	
+	<!-- html 주석  -->
+	<br> <br>
+	<hr>
+	
+	<!-- 
+		html 스페이스바 , enter가 작동이 안됨 (스페이스 한칸 공백은 가능)
+			 스페이스바 1번 : &nbsp; 
+			 enter : <br>
+		
+		<p> -> <br> 2개와 같다
+		
+	 -->
+	
+	오늘은 &nbsp;&nbsp; <br> BackEnd의                    
+	<br>JSP를<br>
+	
+	
+	배웁니다.  <!-- body 안에 들어있는 space와 enter는 html에서 적용이 안된다.  -->
+	
+	<hr>
+	</center>
+	
+</body>
+</html>
