@@ -23,22 +23,22 @@
 	String em = request.getParameter("email");              
 	String sub = request.getParameter("subject");              
 	String cont = request.getParameter("contents");              
-
+	
 %>    
 
 <!--  DB Connection 객체를 불러들임 -->
-<%@ include file ="../db_conn/db_conn_orcle.jsp" %>
+<%@ include file ="../db_conn/db_conn_orcle.jsp" %>       <!-- db_conn_orcle.jsp 에 Connection 객체 들어있음 -->
 
-<!--  Statement 객치를 사용해서 DB에 저장함 -->
+<!--  Statement 객체를 사용해서 DB에 저장함 -->
 <%
 
-	// Client엥서 받은 값을 DB에 저장
+	// Client에서 받은 값을 DB에 저장
 	
 	String sql = null ;   // 변수 sql 에는 SQL 쿼리를 저장하는 변수
 	Statement stmt = null ;    // stmt 변수 : SQL 쿼리를 담아서 DB에 적용하는 객체
 	
 	sql = "insert into guestboard (name , email , subject , content )" ;
-	sql = sql + " values ('" + na + "','" + em + "','" + sub + "','" + cont +"')" ;    // values 앞에 공백이 꼭 들어가야 함   
+	sql = sql + " values ('" + na + "','" + em + "','" + sub + "','" + cont+"')" ;    // values 앞에 공백이 꼭 들어가야 함 , 작은 따옴표도 주의
 	
 	// 2번째 sql = 최종 sql
 	out.println(sql);
@@ -50,17 +50,14 @@
 	
 	try {
 		//DB에 값을 넣을 때 오류가 발생되더라도 전체 프로그램이 중지되지 않도록 설정
-		stmt.execute(sql);		// Datebase에 저장완료								// 톰캣에서는 자동커밋됨
-		
+		stmt.execute(sql);		// Datebase에 저장완료								// 톰캣에서는 자동커밋됨 ( developer에서는 반드시 commit 필요)
+								//stmt.execute(sql) : insert , update , delete  일 때는 그냥 execute를 사용
 	} catch (Exception e) {
 		
 		e.printStackTrace();
 		out.println("DB 저장에 실패했습니다.");
 		
-		
-		
-				
-		
+	
 		
 	}
 //write .html에서 값을 넣으면 save.jsp으로 넘어와서 get파라미터를 통해 각 변수에 값이 저장됨
@@ -85,7 +82,8 @@
 	<%= em %>	<br>
 	<%= sub %>	<br>
 	<%= cont %>	<br>
-         
+      
+    <h1> Statement </h1>     
 
 </body>
 </html>
