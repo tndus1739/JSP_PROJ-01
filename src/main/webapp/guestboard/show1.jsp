@@ -58,10 +58,12 @@
 	    	<tr> <td> 이메일 : </td> <td> <%= rs.getString("email") %> </td> </tr>
 	    	<tr> <td> 글내용 : </td> <td> <%= rs.getString("content") %> </td> </tr>
 	    	
+	    	
+
 	    </table>
 		<br>
 	<%
-			}while (rs.next() );
+			} while (rs.next());
 		}
 	%>
 	
