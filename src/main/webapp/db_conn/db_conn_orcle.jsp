@@ -13,7 +13,7 @@
 		                              // try 블락에서 오류 발생시 catch 블락이 작동
 		// try 블락				
 		Class.forName(driver);			// driver 를 로드
-		conn = DriverManager.getConnection(url , "C##HR" , "1235");  // url : 오라클의 1521번 데이터베이스에 접속하겠다. 
+		conn = DriverManager.getConnection(url , "C##HR" , "1234");  // url : 오라클의 1521번 데이터베이스에 접속하겠다. 
 		
 	    //JSP 에서 출력하라
 //	    out.println("DB 연결이 성공했습니다.");					// 정상작동됐으면 주석처리
