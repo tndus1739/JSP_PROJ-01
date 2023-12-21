@@ -6,8 +6,8 @@
 <%
 	Connection conn = null ;
 	String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-	String url = "jdbc:sqlserver://localhost:1433;DatabaseName=myDB; encrypt=false";  // encrypt=false 암호화 하지 않겠다. // 세미콜론과 콜론 혼동주의
-
+	String url = "jdbc:sqlserver://localhost:1433;DatabaseName=myDB;encrypt=false";  // encrypt=false 암호화 하지 않겠다. // 세미콜론과 콜론 혼동주의
+																					 // 공백 들어가면 안됨
 	// 예외 처리 ( 프로그램 오류 (Error)를 예외라고 함)
 	
 	try {		// try 불락에서 오류가 발상하도라도 프로그램이 멈추지 않도록 함

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<Script language = "javascript" >
+	function check(){
+		
+		// alert ("함수 호출 성공");
+		
+		with (document.myform){
+			if (name.value.length == 0 ) {
+				alert ("이름을 입력해 주세요");
+				name.focus();
+				return false ;
+			}
+		
+			if (email.value.length == 0 ) {
+				alert ("메일을 입력해 주세요");
+				email.focus();
+				return false ;
+			}
+			if (subject.value.length == 0 ) {
+				alert ("제목을 입력해 주세요");
+				subject.focus();
+				return false ;
+			}
+			if (content.value.length == 0 ) {
+				alert ("내용을 입력해 주세요");
+				content.focus();
+				return false ;
+			}
+		
+			document.myform.submit();  // action으로 넘어감
+			
+			
+			
+		}
+	}
+
+</Script>
+
+</head>
+<body>
+	<h2> Form 내의 input 에서 값이 없을 경우 유효성 체크 (JavaScript)</h2>
+	
+	<form name = "myform"  method = "get"  action = "aaa.jsp">   <!-- method = "post" or get -->
+		이름 : <input type="text" name = "name"> <br>
+		메일 : <input type="text" name = "email"> <br>
+		제목 : <input type="text" name = "subject" size ="40"> <br>
+		내용 : <textarea rows = "30" cols = "100" name = content > </textarea> <br>
+	
+		<a href = "#" onClick = "history.go(-1)">    <!--(-1) : 이전 페이지로 돌아가라   --> 
+			<img src = "./image/cancle.gif" width ="100px"> 
+		</a>
+		
+		
+		<br> <br>
+		
+		<a href = "#" onClick = "check();">     <!-- 자바스크립트의 check 함수 호출 ( 함수 위에 넣어줌) --> 
+		
+		<img src = "./image/ok.gif" width = "100px"> <br>
+	
+	</form>
+	
+</body>
+</html>

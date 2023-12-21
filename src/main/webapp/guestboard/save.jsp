@@ -9,7 +9,7 @@
 <!--  클라이언트에서 넘어오는 한글이 깨지지 않도록 처리 -->
 <% request.setCharacterEncoding("UTF-8"); %> 
 
-<!-- 클라이언트에서 넘어오는 값을 받아서 출력 : request 객체 -->
+<!-- 클라이언트에서 넘어오는 값을 받아서 출력 : request 객체가 담고 있다. -->
 <!-- 자바코드는 확장자 jsp로 저장 -->
 <!-- Parameter :  ? 뒤에 넘어오는 값  -->
 <% 
@@ -20,14 +20,17 @@
 	// 파라미터로 넘어오는 값은 모두 String 
 	// %= : 출력해라 (띄어쓰면 안됨)
 	String na = request.getParameter("name");       // 클라이언트에게 받은 값을 na 변수에 저장       
-	String em = request.getParameter("email");              
+	String em = request.getParameter("email");      // "email"에 있는 값을 받아와서 em 변수에 넣어라  
 	String sub = request.getParameter("subject");              
 	String cont = request.getParameter("contents");              
 	
 %>    
 
 <!--  DB Connection 객체를 불러들임 -->
-<%@ include file ="../db_conn/db_conn_orcle.jsp" %>       <!-- db_conn_orcle.jsp 에 Connection 객체 들어있음 -->
+<%@ include file ="../db_conn/db_conn_oracle.jsp" %>       <!-- db_conn_orcle.jsp 에 Connection 객체 들어있음 -->
+
+<!-- include file : include 된 파일을 그대로 가져다 사용한다. (코드가 들어와짐)  가져오지 않으면 매번 코드를 다 쳐줘야한다. -->
+
 
 <!--  Statement 객체를 사용해서 DB에 저장함 -->
 <%
@@ -35,16 +38,17 @@
 	// Client에서 받은 값을 DB에 저장
 	
 	String sql = null ;   // 변수 sql 에는 SQL 쿼리를 저장하는 변수
-	Statement stmt = null ;    // stmt 변수 : SQL 쿼리를 담아서 DB에 적용하는 객체
+	Statement stmt = null ;    // stmt 변수 : SQL 쿼리를 담아서 DB에 적용해서 실행하는 객체
 	
-	sql = "insert into guestboard (name , email , subject , content )" ;
-	sql = sql + " values ('" + na + "','" + em + "','" + sub + "','" + cont+"')" ;    // values 앞에 공백이 꼭 들어가야 함 , 작은 따옴표도 주의
+	sql = "insert into guestboard (name , email , subject , content )" ; // "" 안의 내용이 spl에 들어감
+	sql = sql + " values ( '" + na + "','" + em + "','" + sub + "','" + cont + "')" ;    // values 앞에 공백이 꼭 들어가야 함 , DB안에 들어갈 때 작은 따옴표 입력
 	
 	// 2번째 sql = 최종 sql
 	out.println(sql);
 	
 	// Statement 객체를 활성화  : COnnection 객체로 Statement 객체를 생성함
-	stmt = conn.createStatement();
+	stmt = conn.createStatement();  // conn객체(include 해서 가져온 오라클객체)를 호출해서 stmt를 만들겠다. 
+									// stmt는 오라클 XE의 HR 계정의 DB정보를 가지게 됨
 
 	// stmt 를 사용해서 DB에 값을 insert
 	

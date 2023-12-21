@@ -4,7 +4,12 @@
  <%@ page import = "java.sql.*" %>  
  
  <!-- conn 객체 : oracle XE 에 접속하기 위해 include 함 -->
-<%@ include file ="../db_conn/db_conn_orcle.jsp" %>
+<%@ include file ="../db_conn/db_conn_oracle.jsp" %>
+
+
+<!--show : DB에 저장된 값을 읽어와서 화면에 출력   -->
+
+
 
  <%
 	// 사용할 변수를 초기화  
@@ -25,11 +30,11 @@
  	
  	try {
  		// stmt 객체에 sql 쿼리를 넣어서 실행
- 		rs =  stmt.executeQuery(sql);			// sql : select 문인 경우 stmt.executeQuery(sql); 사용 , rs : select 한 결과 레코드셋을 담은 객체
+ 		rs =  stmt.executeQuery(sql);			// sql : "select문"인 경우 stmt.executeQuery(sql); 사용 , rs : select 한 결과 레코드셋을 담은 객체
  												// cf)  stmt.execute(sql) : insert , update , delete  일 때는 그냥 execute를 사용
  	// rs 는 select한 결과 레코드셋을 담고 있다. 
  	// rs.next()    : 다음 레코드가 존재하면 true
- 	
+ 	// DB에서 값을 가져온 rs 가 <body>에 결과 값을 출력
  	
  	} catch (Exception e) {
  		out.println("DB 접속에 문제가 생겼습니다.");
@@ -49,8 +54,8 @@
 	<h2> DB의 값을 읽어와서 출력하는 페이지</h2>
 	
 	<%
-		if (rs.next()) {     // rs의 레코드가 존재할 때 작동됨 , 커서가 다음 레코드로 위치함	
-			do {
+		if (rs.next()) {     // rs의 레코드가 존재할 때 작동됨 , 커서가 다음 레코드로 위치함					//table이 계속 루프가 돌아감
+			do {																					// 다음 레코드가 존재하면 true
 	%>
 	    <table border = "1" width = "500px">
 	    	<tr> <td colspan = "2"> <%= rs.getString("subject")%> </td> </tr>

@@ -15,14 +15,14 @@
 
 %>
 
-<%@ include file ="../db_conn/db_conn_orcle.jsp" %>
+<%@ include file ="../db_conn/db_conn_oracle.jsp" %>
 
 <%	
 	// 변수설정
 	String sql = null ;
 	Statement stmt = null ;
 	
-	sql = "insert into mem ( name , age , weight , addr , phone )";
+	sql = "insert into soso ( name , age , weight , addr , phone )";
 	sql = sql +  " values ('" + na + "','" + age + "','" + we + "','" + addr+ "','" + ph + "')";
 	// statement : sql 쿼리에서 변수값을 다 집어넣음
 	out.println(sql);

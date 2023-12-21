@@ -14,7 +14,7 @@ String ph =request.getParameter("phone");
 
 %>
 
-<%@ include file ="../db_conn/db_conn_orcle.jsp" %>
+<%@ include file ="../db_conn/db_conn_oracle.jsp" %>
  
 <%
 	String sql = null ;
