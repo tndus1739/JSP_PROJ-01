@@ -28,6 +28,9 @@
 	}
 
 
+	
+	
+	
 
 %>
 
@@ -50,15 +53,22 @@
 	
 	%>
 
-			<!--  출력부분 : 테이블의 컬럼명으로 출력 -->
-			<!-- <table border="1" width = "600px" ; style="word-wrap:break-word"> -->
-			<tr><td> <%= rs.getString("name") %> </td>
+			<!--  출력부분 : 테이블의 컬럼명으로 출력 ( 테이블의 index 번호로도 출력가능 : show2-1)-->
+			
+			<tr><td> <%= rs.getString("name") %> </td>        <!--  첫번째 컬럼을 가지고 와라 -->
 				<td> <%= rs.getString("email") %> </td>
 				<td> <%= rs.getString("subject") %> </td>
 				<td> <%= rs.getString("content") %> </td>
 			</tr>
-			<!-- </table> -->
+		
+					<!--  출력부분 : 테이블의 컬럼의 index 번호로 출력 -->
 			
+   <!--  	<tr><td> <%= rs.getString(1)%> </td>        <!--  첫번째 컬럼을 가지고 와라 -->
+   <!-- 		<td> <%= rs.getString(2) %> </td>
+				<td> <%= rs.getString(3) %> </td>
+				<td> <%= rs.getString(4) %> </td>
+			</tr>
+														-->
 			
 			
 	<%
@@ -72,45 +82,6 @@
 	%>
 
 </table>
-
-<pr>
-
-<hr>
-
-<pr>
-
-
-<table width = "600px" border="1">
-		<tr> <th> 이름 </th> <th> 메일주소 </th> <th> 제목 </th> <th> 내용 </th> </tr>     
-	<%			
-	if (rs.next()) {                       // 두번째 </tr>이 계속 루프 돌아감
-			do{
-	
-	%>
-
-			
-			<!--  출력부분 : 테이블의 컬럼의 index 번호로 출력 -->
-			<!-- <table width = "600px" border="3"> -->
-			<tr><td> <%= rs.getString(1)%> </td>         <!--  첫번째 컬럼을 가지고 와라 -->
-				<td> <%= rs.getString(2) %> </td>
-				<td> <%= rs.getString(3) %> </td>
-				<td> <%= rs.getString(4) %> </td>
-			</tr>
-			<!-- </table> -->
-	<%
-			} while (rs.next())	 ;
-		} else {
-		
-			 out.println("접속 실패 : DB에 값이 존재하지 않습니다.");
-		
-		}
-	
-	%>
-
-</table>
-
-
-
 
 
 
