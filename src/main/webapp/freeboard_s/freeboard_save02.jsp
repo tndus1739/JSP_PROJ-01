@@ -70,13 +70,6 @@
 		//객체 생성시 sql 구문을 넣는다. 
 	pstmt = conn.prepareStatement(sql);
 	
-	//<<시작>>레코드 1000개 입력 : for 
-	
-//	for ( int i = 1 ; i <= 1000 ; i++){
-		
-//		id =  i; 
- 
-		 
 	//?에 변수값을 할당 
 	pstmt.setInt(1, id);		//int  
 	pstmt.setString(2, na);
@@ -87,13 +80,7 @@
 	pstmt.setString(7, ymd);
 	pstmt.setInt(8, id);		//int 
 	
-	pstmt.executeUpdate(); 
-	
- //	}
-	//<<시작>>레코드 1000개 입력 : for 
-	
-	
-	
+	pstmt.executeUpdate();    
 	
 	//out.println (sql); 
 	//if (true) return ; 			//프로그램을 중지 시킴. 디버깅할때 사용함. 
@@ -119,8 +106,11 @@
  
   -->
  
- <%  response.sendRedirect("freeboard_list03.jsp"); %>
+ <% // response.sendRedirect("freeboard_list.jsp"); %>
  
+ 
+ <jsp:forward page = "freeboard_list.jsp" />
+
 
 
 <!DOCTYPE html>

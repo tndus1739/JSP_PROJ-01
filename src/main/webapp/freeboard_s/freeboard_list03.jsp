@@ -94,8 +94,7 @@
 	
 	//go 변수 를 넘겨 받아서 wheregroup, startpage, endpage 정보를 알아낼 수 있다. 
 		//코드 블락
-	if (request.getParameter("go") != null 
-			){   // freeboard_list03.jsp?go=3
+	if (request.getParameter("go") != null ){   // freeboard_list03.jsp?go=3
 		where = Integer.parseInt(request.getParameter("go"));  // go 변수의 값을 where변수에 할당
 		wheregroup = (where - 1) / maxpages + 1 ;  //현재 내가 속한 그룹을 알수 있다.
 		startpage = (wheregroup - 1) * maxpages +1 ; 
@@ -104,7 +103,7 @@
 		
 	//gogroup 변수를 넘겨 받아서 startpage, endpage, where 의 정보를 알아낼 수 있다. 
 		//코드 블락 
-	}else if (request.getParameter("gogroup") != null  ){  //freeboard_list03.jsp?gogroup= 
+	}else if (request.getParameter("gogroup") != null){  //freeboard_list03.jsp?gogroup= 
 		wheregroup = Integer.parseInt(request.getParameter("gogroup"));  //현재내가 위치한 그룹
 		startpage = (wheregroup - 1) * maxpages +1 ; 
 		where = startpage; 
@@ -118,7 +117,7 @@
 	int priorpage = where -1 ; 
 	int startrow = 0; 			//하나의 page에서 레코드 시작 번호 
 	int endrow = 0; 			//하나의 page에서 레코드 마지막 번호 
-	int maxrow = 10; 			//한페이지 내에 출력할 행의 갯수 (row, 행,레코드 갯수)
+	int maxrow = 20; 			//한페이지 내에 출력할 행의 갯수 (row, 행,레코드 갯수)
 	int totalrows = 0; 			// DB에서 select 한 총 레코드 갯수 
 	int totalpages = 0 ; 		// 총 페이지 갯수 
 	
@@ -201,7 +200,6 @@
 	
 	%>
 
-	<!-- 루프돌아가면서 출력되는 부분 -->
   <tr>
   	<td> <%= keyid.elementAt(j) %> </td>
   	<td><a href="freeboard_read.jsp?id=<%= keyid.elementAt(j) %>&page=<%= where %>"> 

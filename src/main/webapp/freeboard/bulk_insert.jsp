@@ -1,61 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%@ page import = "java.sql.*" %>      
-<%@ include file ="./conn_oracle.jsp" %>    
- 
+
+<%@ page import="java.sql.*" %>  
+<%@ include file = "./conn_oracle.jsp" %>
+
 <%
-
-	// for문을 사용해서 freeboard 테이블에 값 1000개 insert
+	// for 문을 사용해서 freeboard 테이블에 값 1000 개 insert 
+	String sql = null; 
+	PreparedStatement pstmt = null; 
 	
-	String sql = null ;
-	PreparedStatement pstmt = null ;
-
-
-	sql = "insert into freeboard (id, name, password, email, "; 						// 너무 길어서 나눠씀
+					
+	sql = "insert into freeboard (id, name, password, email, "; 
 	sql += "subject,content, inputdate, masterid,readcount,replaynum,step ) " ;		
 	sql += "values ( ?,?,?,?,?,?,?,?," ;
 	sql +=  "0 , 0 , 0)";
 	
-	// pstmt 객체 생성
-	
-	pstmt = conn.prepareStatement(sql);
+	// pstmt 객체 생성 
+	pstmt = conn.prepareStatement(sql); 
 	
 	try {
+		for (int i = 0 ; i < 1000 ; i++ ) {
+			// pstmt 객체의 sql 쿼리의 ? 에 변수 값 할당. 
+			pstmt.setInt(1,  i ); 	// 1 , id 필드의 값 
+			pstmt.setString(2, "홍길동 - " + i) ; 					// ?가 8개라서 8개의 값 다 집어넣음
+			pstmt.setString(3, "1234") ; 
+			pstmt.setString(4, "aaa@aaa.com - " + i ) ; 
+			pstmt.setString(5, "제목 - " + i); 
+			pstmt.setString(6, "내용 - " + i); 
+			pstmt.setString(7, "23-12-21"); 
+			pstmt.setInt(8,  i ); 
+			
+			pstmt.executeUpdate(); 			
+		}
 		
-	for ( int i = 0 ; i < 1000 ; i++) {
+		out.println ("DB에 1000번 잘 값이 저장되었습니다"); 
 		
-		// pstmt 객체의 sql 쿼리의 ? 에 변수값 할당 
-				
-		pstmt.setInt(1,  i);       // 1 :  id 필드의 값		// max += i -> max + max + i
-		pstmt.setString(2, "SOSO - " + i ) ;
-		pstmt.setString(3, "1234") ;
-		pstmt.setString(4, "aaa@aaa.com - " + i ) ;
-		pstmt.setString(5, "제목 - " + i ) ;
-		pstmt.setString(6, "내용 - " + i ) ;
-		pstmt.setString(7, "23-12-21") ;
-		pstmt.setInt(8, i ) ;
-		
-		pstmt .executeUpdate();
-		
+	} catch (Exception e) {
+		out.println ("DB 저장에 실패 했습니다. "); 
+		e.printStackTrace();
 	}
-	
-		out.println ("DB에 1000번 값이 잘 저장되었습니다.");
-	
-	} catch (Exception e ) {	
-		
-		out.println ("DB 저장에 실패했습니다.");
-		e.printStackTrace();	
-		
-	}
-	
-	
-%> 
-   
-  
-  
-  
-    
+
+%>
+
 <!DOCTYPE html>
 <html>
 <head>

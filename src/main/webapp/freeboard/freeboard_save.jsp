@@ -92,7 +92,7 @@
  
   -->
  
- <% // response.sendRedirect("freeboard_list.jsp"); %>
+ <%  response.sendRedirect("freeboard_list.jsp"); %>
  
  
  <jsp:forward page = "freeboard_list.jsp" />

@@ -4,7 +4,7 @@
 <!--  필요한 라이브러리 Import -->
 <%@ page import = "java.sql.*,java.util.*,java.text.*" %>
 <!-- DB include -->
-<%@ include file ="conn_oracle.jsp" %>
+<%@ include file ="./conn_oracle.jsp" %>
 <!-- form 에서 넘어오는 값의 한글 처리  -->
 <% request.setCharacterEncoding("UTF-8"); %>
 
@@ -37,7 +37,7 @@
 	PreparedStatement pstmt = null; 
 	ResultSet rs = null;       //id 컬럼의 최대값을 select 
 	
-	
+
 	try {
 	//DB에서 값을 처리 
 	
@@ -119,8 +119,11 @@
  
   -->
  
- <%  response.sendRedirect("freeboard_list03.jsp"); %>
+ <% // response.sendRedirect("freeboard_list.jsp"); %>                   <!-- DB에 있는 값을 출력페이지("freeboard_list.jsp")로 이동시킴 -->  
  
+ 
+ <jsp:forward page = "freeboard_list03.jsp" />
+
 
 
 <!DOCTYPE html>

@@ -7,9 +7,9 @@
     function check(){                                         
      with(document.msgwrite){                      
       if(subject.value.length == 0){                  
-       alert("제목을 입력해 주세요!!");                       
+       alert("제목을 입력해 주세요!!");            // 경고창           
        subject.focus();                           
-       return false;                             
+       return false;              			  // return을 false로 둬야한다 . true로 넣으면 제출로 넘어감            
       }                                         
       if(name.value.length == 0){                   
        alert("이름을 입력해 주세요!!");                  

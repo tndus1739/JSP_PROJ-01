@@ -75,8 +75,7 @@
 
   <tr>
   	<td><%= rs.getString("id") %> </td>
-  	<td><a href="freeboard_read.jsp?id=<%= rs.getString("id") %>"> 
-  		<%= rs.getString("subject") %> </a> </td>
+  	<td><a href="freeboard_read.jsp?id=<%= rs.getString("id") %>"> <%= rs.getString("subject") %> </a> </td>
   	<td><%= rs.getString("name") %> </td>
   	<td><%= rs.getString("inputdate").substring(0,8) %> </td>
   	<td><%= rs.getString("readcount") %> </td>
